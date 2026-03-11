@@ -37,9 +37,9 @@ const Hero = () => {
           magnetRadius={5}
           ringRadius={10}
           particleSize={0.6}
-          color="#f9feff"
+          color="#4ee2ff"
           autoAnimate={true}
-          particleShape="sphere"
+          particleShape="tetrahedron"
           waveSpeed={0.4}
           lerpSpeed={0.05}
         />
