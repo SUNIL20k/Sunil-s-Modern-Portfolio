@@ -1,26 +1,49 @@
+import { useRef } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-scroll";
 import { HiArrowDown } from "react-icons/hi";
-import { fadeInUp, personalInfo } from "../data/constants";
+import { personalInfo } from "../data/constants";
 import { TypeAnimation } from "react-type-animation";
 import { FaArrowRight, FaDownload } from 'react-icons/fa';
 import { HiOutlineSparkles } from 'react-icons/hi';
-// import Button from '../ui/Button';
 import Button from "../ui-components/button";
-import CircularText from "../ui-components/rotation";
 import GradientText from "../ui-components/gradient-text";
+import Antigravity from "../ui-components/antigravity";
 
 const Hero = () => {
+  const heroRef = useRef(null);
   return (
     <section
+      ref={heroRef}
       id="hero"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
-    > 
+    >
       {/* Background Effects */}
-      <div className="absolute inset-0 bg-hero-gradient" />
+      {/* <div className="absolute inset-0 bg-hero-gradient" />
       <div className="absolute top-1/4 -left-32 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
       <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-violet-500/10 rounded-full blur-3xl" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-cyan-500/5 via-transparent to-transparent rounded-full" /> */}
+
+      {/* <div className="absolute inset-0 bg-hero-gradient" /> */}
+      <div className="absolute top-10 left-0 w-44 h-80 bg-cyan-500/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-0 w-72 h-80 bg-violet-500/10 rounded-full blur-3xl" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-cyan-500/5 via-transparent to-transparent rounded-full" />
+
+      {/* Antigravity Animation */}
+      <div className="absolute inset-0 z-0 opacity-60">
+        <Antigravity
+          eventSource={heroRef}
+          count={300}
+          magnetRadius={5}
+          ringRadius={10}
+          particleSize={0.6}
+          color="#f9feff"
+          autoAnimate={true}
+          particleShape="sphere"
+          waveSpeed={0.4}
+          lerpSpeed={0.05}
+        />
+      </div>
 
       {/* Grid Pattern */}
       <div
@@ -69,7 +92,7 @@ const Hero = () => {
         </motion.h1> */}
         <GradientText
           // colors={["#5227FF","#FF9FFC","#B19EEF"]}
-          colors={["#5227FF","#FF9FFC","#06b6d4", "#8b5cf6", "#ec4899"]}
+          colors={["#5227FF", "#FF9FFC", "#06b6d4", "#8b5cf6", "#ec4899"]}
           animationSpeed={6}
           showBorder={false}
           className="custom-class"
@@ -99,7 +122,7 @@ const Hero = () => {
           {personalInfo.summary}
         </motion.p>
 
-        <motion.div 
+        <motion.div
           // variants={fadeInUp} 
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -126,13 +149,13 @@ const Hero = () => {
         </div> */}
 
         {/* CTA Buttons */}
-        <motion.div 
+        <motion.div
           // variants={fadeInUp} 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.8 }}
           className="flex flex-wrap items-center justify-center gap-4"
-          >
+        >
           <Button variant="glow" href="#projects" icon={HiOutlineSparkles}>
             View Projects
           </Button>
@@ -142,7 +165,7 @@ const Hero = () => {
           <Button variant="secondary" href="#contact" icon={FaArrowRight}>
             Hire Me
           </Button>
-          
+
         </motion.div>
       </div>
 
